@@ -1227,3 +1227,12 @@ fn ffi() {
         err_println!("PASS");
     }
 }
+#[test]
+
+fn ffi_set_cpu_set() {
+    unsafe{
+        let mut env: *mut rocksdb_env_t;
+        env = rocksdb_create_default_env();
+        rocksdb_set_cpu_set(env);
+    }
+}
