@@ -1,6 +1,6 @@
 use std::sync::Arc;
 
-use libc::{self, c_int};
+use libc::{self, c_int, size_t};
 
 use crate::{ffi, Error};
 
@@ -117,6 +117,13 @@ impl Env {
     pub fn lower_high_priority_thread_pool_cpu_priority(&mut self) {
         unsafe {
             ffi::rocksdb_env_lower_high_priority_thread_pool_cpu_priority(self.0.inner);
+        }
+    }
+
+    /// set the cpu set
+    pub fn set_cpu_set(&mut self, cpu_set: &[c_int]) {
+        unsafe {
+            ffi::rocksdb_env_set_cpu_set(self.0.inner, cpu_set.as_ptr(), cpu_set.len() as size_t);
         }
     }
 }
