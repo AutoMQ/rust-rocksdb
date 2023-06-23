@@ -3,6 +3,4 @@
 	url = https://github.com/google/snappy.git
 [submodule "rocksdb_sys/rocksdb"]
 	path = librocksdb-sys/rocksdb
-	url = https://github.com/facebook/rocksdb.git
-[submodule "rocksdb"]
 	url = https://github.com/AutoMQ/rocksdb.git
